@@ -4,6 +4,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oritain-project", "Oritain-
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework-Oritain", "Framework-Oritain\Framework-Oritain.csproj", "{6B47E906-4D46-4CD0-80AA-91A028FA394C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Specflow-Oritain", "Specflow-Oritain\Specflow-Oritain.csproj", "{AC6DA8CD-1DF4-457D-97ED-7CAF608C8CCD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6B47E906-4D46-4CD0-80AA-91A028FA394C} = {6B47E906-4D46-4CD0-80AA-91A028FA394C}
+		{2934AB0E-A1C6-4A44-8C2E-D44B3E7B8C1A} = {2934AB0E-A1C6-4A44-8C2E-D44B3E7B8C1A}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +24,9 @@ Global
 		{6B47E906-4D46-4CD0-80AA-91A028FA394C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B47E906-4D46-4CD0-80AA-91A028FA394C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B47E906-4D46-4CD0-80AA-91A028FA394C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC6DA8CD-1DF4-457D-97ED-7CAF608C8CCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC6DA8CD-1DF4-457D-97ED-7CAF608C8CCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC6DA8CD-1DF4-457D-97ED-7CAF608C8CCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC6DA8CD-1DF4-457D-97ED-7CAF608C8CCD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -1,44 +1,29 @@
-using Framework_Oritain.Config;
+
 using Framework_Oritain.Driver;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Edge;
-using OpenQA.Selenium.Firefox;
 using Oritain_project.Pages;
 
 namespace Oritain_project;
 
-public class LoginTest : IDisposable
+public class LoginTest
 {
-    private IWebDriver _driver;
-    public LoginTest()
+    private IHomePage _homePage;
+    private readonly ILoginPage _loginPage;
+    
+    public LoginTest(IHomePage homePage, ILoginPage loginPage)
     {
-        var testSettings = new TestSettings
-        {
-            BrowserType = DriverFixture.BrowserType.Chrome,
-            ApplicationUrl = new Uri("http://demo.testfire.net/login.jsp"),
-            TimeoutInterval = 30
-        };
-        _driver = new DriverFixture(testSettings).Driver;
+        _homePage = homePage;
+        _loginPage = loginPage;
     }
     
     [Theory]
     [InlineData("jsmith","demo1234")]
     [InlineData("admin","admin")]
-    public void Test2(string username, string password)
+    public void LoginValid(string username, string password)
     {
-        var loginPage = new LoginPage(_driver);
-        var homePage = new HomePage(_driver);
-        
-        loginPage.loginCred(username, password);
-        loginPage.ClickLogin();
+        _loginPage.loginCred(username, password);
+        _loginPage.ClickLogin();
         
         //Assertion
-        Assert.True(homePage.welcomeText.Displayed, "Welcome to Altoro Mutual Online.");
-    }
-    
-    public void Dispose()
-    {
-        _driver?.Quit();
+        _homePage.validateLogin();
     }
 }

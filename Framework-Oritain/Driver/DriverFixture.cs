@@ -6,11 +6,11 @@ using OpenQA.Selenium.Firefox;
 
 namespace Framework_Oritain.Driver;
 
-public class DriverFixture
+public class DriverFixture : IDriverFixture, IDisposable
 {
-    private readonly TestSettings _testSettings;
+    private readonly TestSettings? _testSettings;
     public IWebDriver Driver { get;  }
-    public DriverFixture(TestSettings testSettings)
+    public DriverFixture(TestSettings? testSettings)
     {
         _testSettings = testSettings;
         Driver = GetDriverType(_testSettings.BrowserType);
@@ -34,4 +34,14 @@ public class DriverFixture
         Firefox,
         EdgeChromium,
     }
+
+    public void Dispose()
+    {
+        Driver.Dispose();
+    }
+}
+
+public interface IDriverFixture
+{
+    IWebDriver Driver { get; }
 }
